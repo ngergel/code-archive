@@ -26,7 +26,7 @@ using comp = greater<pair<ll, ll> >;
 
 
 // Infinity.
-const ll INF = 1e12;
+const ll INF = 1e9;
 
 
 /*
@@ -35,21 +35,16 @@ const ll INF = 1e12;
     Arguments:
         - s: Source vertex in the graph.
         - v: Number of vertices in the graph.
-        - d: Array of minimum distance to any given vertex.
-             Defaults to INF if not reachable.
-        - p: Array of parents for every vertex.
-             Defaults to -1 if there's no parent.
-        - al: Adjacency list representation of the graph.
-              In the pair, it goes (vertex, cost).
+        - d: Array of minimum distance to any given vertex. Defaults to INF if not reachable.
+        - prev: Array of parents for every vertex. Defaults to -1 if there's no parent.
+        - al: Adjacency list representation of the graph. In the pair, it goes (vertex, cost).
 */
-void dijkstra(ll s, ll v, vector<ll>& d, vector<ll>& p,
-              vector<vector<pair<ll, ll> > >& al) {
-
+void dijkstra(ll s, ll v, vector<ll>& d, vector<ll>& prev, vector<vector<pair<ll, ll> > >& al) {
     priority_queue<pair<ll, ll>, vector<pair<ll, ll> >, comp> qu;
     vector<bool> marked(v, false);
     
     d.clear(); d.resize(v, INF);
-    p.clear(); p.resize(v, -1);
+    prev.clear(); prev.resize(v, -1);
 
     d[s] = 0;
     qu.push(make_pair(0, s));
@@ -65,7 +60,7 @@ void dijkstra(ll s, ll v, vector<ll>& d, vector<ll>& p,
 
             if (d[cur] + nbr.second < d[nbr.first]) {
                 d[nbr.first] = d[cur] + nbr.second;
-                p[nbr.first] = cur;
+                prev[nbr.first] = cur;
                 qu.push(make_pair(d[nbr.first], nbr.first));
             }
         }
@@ -90,12 +85,11 @@ int main() {
     // Read in each edge.
     ll a, b, c;
     while (e--) {
-        cout << "Edge from a -> b, with cost c: ";
-        cin >> a >> b >> c;
+        cout << "Edge from a -> b, with cost c: "; cin >> a >> b >> c;
         al[a].push_back(make_pair(b, c));
     }
 
-    // Run dijkstras. Suppse 0 is the source vertex.
+    // Run dijkstras. Suppose 0 is the source vertex.
     dijkstra(0, v, dist, parents, al);
 
     // Write results.
