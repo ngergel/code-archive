@@ -99,9 +99,9 @@ int main() {
 
     // Write results.
     cout << "Edges in shortest path tree:" << endl;
-    for (ll i = 0; i < v; i++) cout << setw(3) << parents[i] << " -> " << i << endl;
+    for (size_t i = 0; i < v; i++) cout << setw(3) << parents[i] << " -> " << i << endl;
     cout << "Minimum cost of each vertex:" << endl;
-    for (ll i = 0; i < v; i++) cout << setw(3) << i << ": " << dist[i] << endl;
+    for (size_t i = 0; i < v; i++) cout << setw(3) << i << ": " << dist[i] << endl;
 
     return 0;
 }

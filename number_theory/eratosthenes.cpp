@@ -34,9 +34,9 @@ using ll = long long;
 void eratosthenes(vector<ll>& primes, ll n) {
     primes.resize(n + 1); iota(begin(primes), end(primes), 0);
 
-    for (ll i = 2; i * i <= n; i++) {
+    for (size_t i = 2; i * i <= n; i++) {
         if (primes[i] == i) {
-            for (ll j = i + i; j <= n; j += i) {
+            for (size_t j = i + i; j <= n; j += i) {
                 primes[j] = i;
             }
         }
@@ -56,7 +56,7 @@ int main() {
     eratosthenes(pr, n);
 
     // Write results. Nicely formatted up to n ~ 40.
-    cout << " n:"; for (ll i = 0; i <= n; i++) cout << setw(3) << i; cout << endl;
-    cout << "pr:"; for (ll i = 0; i <= n; i++) cout << setw(3) << pr[i]; cout << endl;
+    cout << " n:"; for (size_t i = 0; i <= n; i++) cout << setw(3) << i; cout << endl;
+    cout << "pr:"; for (size_t i = 0; i <= n; i++) cout << setw(3) << pr[i]; cout << endl;
     return 0;
 }
