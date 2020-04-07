@@ -2,7 +2,7 @@
     Bubble Sort
     ==================================
 
-    Given an array of values, sorts them.
+    Given an array of values, it sorts them.
     
     Complexity:
         - Time: O(n^2)
@@ -10,6 +10,7 @@
 
     Notes:
         - Assumes > operator is implemented for the given type.
+        - Including this algorithm was inspired in every respect by Ian DeHaan.
 
     Reference:
         - https://en.wikipedia.org/wiki/Bubble_sort
