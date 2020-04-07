@@ -9,6 +9,11 @@
         - Time: O(V + E log V), where V is # of vertices, and E # of edges.
         - Space: O(V)
 
+	Notes:
+		- It's expected that vertices will be in range [0, V), where V is # of vertices.
+		- In the driver code it's assumed that the graph is directed; for an
+		  undirected graph just insert both (v, u) and (u, v) with the same cost.
+
     Reference:
         - https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 
@@ -36,7 +41,7 @@ const ll INF = 1e9;
         - s: Source vertex in the graph.
         - v: Number of vertices in the graph.
         - d: Array of minimum distance to any given vertex. Defaults to INF if not reachable.
-        - prev: Array of parents for every vertex. Defaults to -1 if there's no parent.
+        - prev: Array of parents for every vertex. Defaults to -1 if it's not reachable.
         - al: Adjacency list representation of the graph. In the pair, it goes (vertex, cost).
 */
 void dijkstra(ll s, ll v, vector<ll>& d, vector<ll>& prev, vector<vector<pair<ll, ll> > >& al) {
@@ -89,7 +94,7 @@ int main() {
         al[a].push_back(make_pair(b, c));
     }
 
-    // Run dijkstras. Suppose 0 is the source vertex.
+    // Run dijkstra's. Suppose 0 is the source vertex.
     dijkstra(0, v, dist, parents, al);
 
     // Write results.
