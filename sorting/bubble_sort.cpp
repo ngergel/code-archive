@@ -14,7 +14,7 @@
     Reference:
         - https://en.wikipedia.org/wiki/Bubble_sort
 
-    (c) Noah Gergel, Ian DeHaan 2020
+    (c) Noah Gergel 2020
 */
 
 
