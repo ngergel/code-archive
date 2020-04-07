@@ -50,18 +50,13 @@ int main() {
     ll n;
 
     // Get the upper bound n.
-    cout << "An upper bound n: ";
-    cin >> n;
+    cout << "An upper bound n: "; cin >> n;
 
     // Run the sieve.
     eratosthenes(pr, n);
 
-    // Print results. Nicely formatted up to n ~ 40.
-    cout << " n:";
-    for (ll i = 0; i <= n; i++) cout << setw(3) << i;
-    cout << endl << "pr:";
-    for (ll i = 0; i <= n; i++) cout << setw(3) << pr[i];
-    cout << endl;
-
+    // Write results. Nicely formatted up to n ~ 40.
+    cout << " n:"; for (ll i = 0; i <= n; i++) cout << setw(3) << i; cout << endl;
+    cout << "pr:"; for (ll i = 0; i <= n; i++) cout << setw(3) << pr[i]; cout << endl;
     return 0;
 }

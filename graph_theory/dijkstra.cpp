@@ -9,8 +9,8 @@
         - Time: O(V + E log V), where V is # of vertices, and E # of edges.
         - Space: O(V)
 
-	Reference:
-		- https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+    Reference:
+        - https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 
     (c) Noah Gergel 2020
 */
@@ -26,7 +26,7 @@ using comp = greater<pair<ll, ll> >;
 
 
 // Infinity.
-const ll INF = 1e9;
+const ll INF = 1e12;
 
 
 /*
@@ -35,26 +35,74 @@ const ll INF = 1e9;
     Arguments:
         - s: Source vertex in the graph.
         - v: Number of vertices in the graph.
-        - dist: Array of minimum distance to any given vertex.
-        - parent: Array of parents for every vertex.
+        - d: Array of minimum distance to any given vertex.
+             Defaults to INF if not reachable.
+        - p: Array of parents for every vertex.
              Defaults to -1 if there's no parent.
         - al: Adjacency list representation of the graph.
+              In the pair, it goes (vertex, cost).
 */
-void dijkstra(ll s, ll v, vector<ll>& dist, vector<ll>& parent,
-			  const vector<vector<pair<ll, ll> > > al) {
-	
-	priority_queue<pair<ll, ll>, vector<pair<ll, ll> >, comp> qu;
-	vector<bool> marked(v, false);
-	
-	d.clear(); d.resize(v, INF);
-	p.clear(); p.resize(v, -1);
+void dijkstra(ll s, ll v, vector<ll>& d, vector<ll>& p,
+              vector<vector<pair<ll, ll> > >& al) {
+
+    priority_queue<pair<ll, ll>, vector<pair<ll, ll> >, comp> qu;
+    vector<bool> marked(v, false);
+    
+    d.clear(); d.resize(v, INF);
+    p.clear(); p.resize(v, -1);
+
+    d[s] = 0;
+    qu.push(make_pair(0, s));
+
+    while (!qu.empty()) {
+        pair<ll, ll> entry = qu.top(); qu.pop();
+        ll cur = entry.second;
+
+        if (marked[cur]) continue;
+
+        for (auto nbr : al[cur]) {
+            if (marked[nbr.first]) continue;
+
+            if (d[cur] + nbr.second < d[nbr.first]) {
+                d[nbr.first] = d[cur] + nbr.second;
+                p[nbr.first] = cur;
+                qu.push(make_pair(d[nbr.first], nbr.first));
+            }
+        }
+
+        marked[cur] = true;
+    }
 }
 
 
 // Driver code.
 int main() {
+	vector<vector<pair<ll, ll> > > al;
+	vector<ll> dist, parents;
+	ll v, e;
 
-	dijkstra(s, d, p, v, al);
+    // Get number of vertices and edges.
+    cout << "Number of vertices: "; cin >> v;
+    cout << "Number of edges: "; cin >> e;
 
-	return 0;
+    al.resize(v);
+
+    // Read in each edge.
+    ll a, b, c;
+    while (e--) {
+    	cout << "Edge from a -> b, with cost c: ";
+   		cin >> a >> b >> c;
+   		al[a].push_back(make_pair(b, c));
+    }
+
+    // Run dijkstras. Suppse 0 is the source vertex.
+    dijkstra(0, v, dist, parents, al);
+
+    // Write results.
+    cout << "Edges in shortest path tree:" << endl;
+    for (ll i = 0; i < v; i++) cout << setw(3) << parents[i] << " -> " << i << endl;
+    cout << "Minimum cost of each vertex:" << endl;
+	for (ll i = 0; i < v; i++) cout << setw(3) << i << ": " << dist[i] << endl;
+
+    return 0;
 }
