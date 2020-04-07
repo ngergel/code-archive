@@ -77,9 +77,9 @@ void dijkstra(ll s, ll v, vector<ll>& d, vector<ll>& p,
 
 // Driver code.
 int main() {
-	vector<vector<pair<ll, ll> > > al;
-	vector<ll> dist, parents;
-	ll v, e;
+    vector<vector<pair<ll, ll> > > al;
+    vector<ll> dist, parents;
+    ll v, e;
 
     // Get number of vertices and edges.
     cout << "Number of vertices: "; cin >> v;
@@ -90,9 +90,9 @@ int main() {
     // Read in each edge.
     ll a, b, c;
     while (e--) {
-    	cout << "Edge from a -> b, with cost c: ";
-   		cin >> a >> b >> c;
-   		al[a].push_back(make_pair(b, c));
+        cout << "Edge from a -> b, with cost c: ";
+        cin >> a >> b >> c;
+        al[a].push_back(make_pair(b, c));
     }
 
     // Run dijkstras. Suppse 0 is the source vertex.
@@ -102,7 +102,7 @@ int main() {
     cout << "Edges in shortest path tree:" << endl;
     for (ll i = 0; i < v; i++) cout << setw(3) << parents[i] << " -> " << i << endl;
     cout << "Minimum cost of each vertex:" << endl;
-	for (ll i = 0; i < v; i++) cout << setw(3) << i << ": " << dist[i] << endl;
+    for (ll i = 0; i < v; i++) cout << setw(3) << i << ": " << dist[i] << endl;
 
     return 0;
 }
