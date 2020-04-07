@@ -2,24 +2,21 @@
     Sieve of Eratosthenes
     ==================================
 
-    Description:
-        Finds all primes in range [2, n], for some n.
-        Also grabs a prime divisor for composite numbers.
+    Finds all primes in range [2, n], for some n.
+    Also grabs a prime divisor for composite numbers.
     
     Complexity:
         - Time: O(n log log n)
         - Space: O(n)
 
+    Reference:
+        - https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+
     (c) Noah Gergel 2020
 */
 
 
-// Include statements.
-#include <iostream> // iostream, iomanip are not necessary for the sieve.
-#include <iomanip>
-
-#include <vector>
-#include <numeric>
+#include <bits/stdc++.h>
 using namespace std;
 
 
