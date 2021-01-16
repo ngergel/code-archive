@@ -26,12 +26,12 @@ using namespace std;
 
 
 // Substitute with appropriate type and comparison for priority queue.
-using ll = long long;
-using comp = greater<pair<ll, ll> >;
+using T = long long;
+using comp = greater<pair<T, T> >;
 
 
 // Infinity.
-const ll INF = 1e9;
+const T INF = 1e9;
 
 
 /*
@@ -44,8 +44,8 @@ const ll INF = 1e9;
         - prev: Array of parents for every vertex. Defaults to -1 if it's not reachable.
         - al: Adjacency list representation of the graph. In the pair, it goes (vertex, cost).
 */
-void dijkstra(ll s, ll v, vector<ll>& d, vector<ll>& prev, vector<vector<pair<ll, ll> > >& al) {
-    priority_queue<pair<ll, ll>, vector<pair<ll, ll> >, comp> qu;
+void dijkstra(T s, T v, vector<T>& d, vector<T>& prev, vector<vector<pair<T, T> > >& al) {
+    priority_queue<pair<T, T>, vector<pair<T, T> >, comp> qu;
     vector<bool> marked(v, false);
     
     d.clear(); d.resize(v, INF);
@@ -55,8 +55,8 @@ void dijkstra(ll s, ll v, vector<ll>& d, vector<ll>& prev, vector<vector<pair<ll
     qu.push(make_pair(0, s));
 
     while (!qu.empty()) {
-        pair<ll, ll> entry = qu.top(); qu.pop();
-        ll cur = entry.second;
+        pair<T, T> entry = qu.top(); qu.pop();
+        T cur = entry.second;
 
         if (marked[cur]) continue;
 
@@ -77,9 +77,9 @@ void dijkstra(ll s, ll v, vector<ll>& d, vector<ll>& prev, vector<vector<pair<ll
 
 // Driver code.
 int main() {
-    vector<vector<pair<ll, ll> > > al;
-    vector<ll> dist, parents;
-    ll v, e;
+    vector<vector<pair<T, T> > > al;
+    vector<T> dist, parents;
+    T v, e;
 
     // Get number of vertices and edges.
     cout << "Number of vertices: "; cin >> v;
@@ -88,7 +88,7 @@ int main() {
     al.resize(v);
 
     // Read in each edge.
-    ll a, b, c;
+    T a, b, c;
     while (e--) {
         cout << "Edge from a -> b, with cost c: "; cin >> a >> b >> c;
         al[a].push_back(make_pair(b, c));

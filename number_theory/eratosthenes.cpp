@@ -21,17 +21,17 @@ using namespace std;
 
 
 // Substitute with appropriate type.
-using ll = long long;
+using T = long long;
 
 
 /*
     Implementation of the sieve of Eratosthenes.
 
     Arguments:
-        - primes: Array that will be turned into list of primes/divisors.
+        - primes: Array that wiT be turned into list of primes/divisors.
         - n: Upper bound of sieve.
 */
-void eratosthenes(vector<ll>& primes, ll n) {
+void eratosthenes(vector<T>& primes, T n) {
     primes.resize(n + 1); iota(begin(primes), end(primes), 0);
 
     for (size_t i = 2; i * i <= n; i++) {
@@ -46,8 +46,8 @@ void eratosthenes(vector<ll>& primes, ll n) {
 
 // Driver code.
 int main() {
-    vector<ll> pr;
-    ll n;
+    vector<T> pr;
+    T n;
 
     // Get the upper bound n.
     cout << "An upper bound n: "; cin >> n;

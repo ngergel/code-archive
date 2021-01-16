@@ -24,12 +24,12 @@ using namespace std;
 
 
 // Substitute with appropriate type.
-using ll = long long;
+using T = long long;
 
 
-void bubble_sort(vector<ll>& arr) {
+void bubble_sort(vector<T>& arr) {
     size_t n = arr.size(), new_n;
-    ll temp;
+    T temp;
 
     do {
         new_n = 0;
@@ -48,7 +48,7 @@ void bubble_sort(vector<ll>& arr) {
 
 // Driver code.
 int main() {
-    vector<ll> a; ll n;
+    vector<T> a; T n;
 
     // Read in array of values.
     cout << "Size of array: "; cin >> n;
@@ -63,7 +63,7 @@ int main() {
     
     // Write the results.
     cout << "Sorted array:" << endl;
-    for (ll i : a) cout << i << ' ';
+    for (T i : a) cout << i << ' ';
     cout << endl;
 
     return 0;
