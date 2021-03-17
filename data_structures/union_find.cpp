@@ -7,9 +7,9 @@
     
     Complexity:
         - Time:
-        	* init: O(n)
-        	* find: O(alpha n)
-        	* merge: O(alpha n)
+            * init: O(n)
+            * find: O(alpha n)
+            * merge: O(alpha n)
         - Space: O(n)
 
     Reference:
@@ -30,51 +30,51 @@ using T = long long;
 /*
     Implementation of the union find data structure.
 
-    Init Arguments:
+    Initial Arguments:
         - n: Maximum number of elements. Also the initial number of disjoint sets.
 
     Methods:
-    	- find: Find and return the representative of a subset, given an element.
-    	- merge: Merge two disjoint subsets into one subset.
+        - find: Find and return the representative of a subset, given an element.
+        - merge: Merge two disjoint subsets into one subset.
 */
 struct UnionFind {
-	vector<T> a;
+    vector<T> a;
 
-	UnionFind(T n) {
-		a.resize(n);
-		iota(begin(a), end(a), 0);
-	}
+    UnionFind(T n) {
+        a.resize(n);
+        iota(begin(a), end(a), 0);
+    }
 
-	T find(T x) {
-		return a[x] = (x == a[x] ? x : find(a[x]));
-	}
+    T find(T x) {
+        return a[x] = (x == a[x] ? x : find(a[x]));
+    }
 
-	void merge(T x, T y) {
-		a[find(x)] = find(y);
-	}
+    void merge(T x, T y) {
+        a[find(x)] = find(y);
+    }
 };
 
 
 // Driver code.
 int main() {
-	// Suppose the type is ints and their are 6 elements.
-	UnionFind uf(6);
+    // Suppose the type is ints and their are 6 elements.
+    UnionFind uf(6);
 
-	// // Merge some subsets.
-	uf.merge(0, 1); uf.merge(4, 5);
-	uf.merge(2, 3); uf.merge(0, 2);
+    // // Merge some subsets.
+    uf.merge(0, 1); uf.merge(4, 5);
+    uf.merge(2, 3); uf.merge(0, 2);
 
-	// Check if two elements are in the same subset.
-	T a, b;
-	cout << "Check if two elements a, b are in the same subset: "; cin >> a >> b;
-	if (uf.find(a) == uf.find(b)) cout << "a, b are in the same subset." << endl;
-	else cout << "a, b are not in the same subset." << endl;
+    // Check if two elements are in the same subset.
+    T a, b;
+    cout << "Check if two elements a, b are in the same subset: "; cin >> a >> b;
+    if (uf.find(a) == uf.find(b)) cout << "a, b are in the same subset." << endl;
+    else cout << "a, b are not in the same subset." << endl;
 
-	// Write all elements and their representatives.
-	cout << "elements: ";
-	for (size_t i = 0; i < 6; i++) cout << setw(3) << i << ' '; cout << endl;
-	cout << "     rep: ";
-	for (size_t i = 0; i < 6; i++) cout << setw(3) << uf.find(i) << ' '; cout << endl;
+    // Write all elements and their representatives.
+    cout << "elements: ";
+    for (size_t i = 0; i < 6; i++) cout << setw(3) << i << ' '; cout << endl;
+    cout << "     rep: ";
+    for (size_t i = 0; i < 6; i++) cout << setw(3) << uf.find(i) << ' '; cout << endl;
 
-	return 0;
+    return 0;
 }

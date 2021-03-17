@@ -36,9 +36,7 @@ void eratosthenes(vector<T>& primes, T n) {
 
     for (size_t i = 2; i * i <= n; i++) {
         if (primes[i] == i) {
-            for (size_t j = i + i; j <= n; j += i) {
-                primes[j] = i;
-            }
+            for (size_t j = i + i; j <= n; j += i) primes[j] = i;
         }
     }
 }
