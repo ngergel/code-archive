@@ -12,6 +12,9 @@
             * merge: O(alpha n)
         - Space: O(n)
 
+    Reliability:
+        - unionfind, Kattis
+
     Reference:
         - https://en.wikipedia.org/wiki/Disjoint-set_data_structure
 
@@ -37,10 +40,10 @@ using T = long long;
         - find: Find and return the representative of a subset, given an element.
         - merge: Merge two disjoint subsets into one subset.
 */
-struct UnionFind {
+struct union_find {
     vector<T> a;
 
-    UnionFind(T n) {
+    union_find(T n) {
         a.resize(n);
         iota(begin(a), end(a), 0);
     }
@@ -58,7 +61,7 @@ struct UnionFind {
 // Driver code.
 int main() {
     // Suppose the type is ints and their are 6 elements.
-    UnionFind uf(6);
+    union_find uf(6);
 
     // // Merge some subsets.
     uf.merge(0, 1); uf.merge(4, 5);
