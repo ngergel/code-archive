@@ -36,8 +36,8 @@ void bubble_sort(vector<T>& arr) {
 
         for (size_t i = 1; i < n; i++) {
             if (arr[i - 1] > arr[i]) {
-                temp = arr[i - 1]; arr[i - 1] = arr[i]; arr[i] = temp;
-                new_n = i;
+                temp = arr[i - 1];
+                arr[i - 1] = arr[i], arr[i] = temp, new_n = i;
             }
         }
 
