@@ -18,6 +18,9 @@
 */
 
 
+#include <bits/stdc++.h>
+
+
 /*
     Implementation of Kruskal's Algorithm.
 

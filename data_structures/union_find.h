@@ -23,6 +23,9 @@
 */
 
 
+#include <bits/stdc++.h>
+
+
 /*
     Implementation of the union find data structure.
 
@@ -35,6 +38,7 @@
 */
 struct union_find {
     using T = unsigned long long;
+    
     std::vector<T> p, r;
 
     union_find(T n) {
